@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" class="no-js">
+	<!--<![endif]-->
+	<!-- start: HEAD -->
+	<head>
+		<title>TapOn - The Safety Social Network</title>
+		<!-- start: META -->
+		<meta charset="utf-8" />
+		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="" name="description" />
+		<meta content="" name="author" />
+	
+
+		<!-- end: META -->
+				<script src="assets/plugins/jquery.min.js"></script>
+				<script type="text/javascript" src="phonegap.js"></script>
+				<script type="text/javascript" src="PushNotification.js"></script>
+						<!-- codes to check for app prior usage. -->
+								<!-- The request begins immediately. -->
+		<script type="text/javascript">
+		
+		var result = localauthenticate();
+				if(result == false) {
+				window.location.href = "tapon_lock_screen.html";
+				}
+
+				function localauthenticate() {
+					//check to see that device phone number and GUID exists for this tapon user
+					if (localStorage.getItem("taponDEVICENUMBER") === null) {
+					return false;   //user has not used this app before now
+					}
+	
+			}
+
+	
+		
+		</script>
+		<!-- start: MAIN CSS -->
+		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/fonts/style.css">
+		<link rel="stylesheet" href="assets/css/main.css">
+		<link rel="stylesheet" href="assets/css/main-responsive.css">
+		<link rel="stylesheet" href="assets/plugins/iCheck/skins/all.css">
+		<link rel="stylesheet" href="assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+		<link rel="stylesheet" href="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+		<link rel="stylesheet" href="assets/css/theme_light.css" type="text/css" id="skin_color">
+		<link rel="stylesheet" href="assets/css/print.css" type="text/css" media="print"/>
+		<!--[if IE 7]>
+		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+		<!-- end: MAIN CSS -->
+		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+		<link rel="stylesheet" href="assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
+
+		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+		<link rel="shortcut icon" href="favicon.ico" />
+	</head>
+	<!-- end: HEAD -->
+	<!-- start: BODY -->
+	  
+<body class="footer-fixed">
+<div class="full-content" id="full-content">	
+	<div id='bodycontainer'>
+		
+		
+		
+			<!-- start: HEADER -->
+			<div class="navbar navbar-inverse navbar-fixed-top">
+				
+				<!-- start: TOP NAVIGATION CONTAINER -->
+					<div class="container">
+						<div class="navbar-header">
+							<!-- start: RESPONSIVE MENU TOGGLER -->
+							<button onclick="loadPage('socialsite.html')" class="navbar-toggle" type="button">
+								<span class="clip-home-3"></span>
+							</button>
+							<button onclick="tagEnrolment()" class="navbar-toggle" type="button">
+								<span class="fa fa-tags"></span>
+							</button>
+							<button onclick="window.location.href = 'tapon_poptap_screen.html'" class="navbar-toggle" type="button">
+								<span class="fa fa-comments"></span>
+							</button>
+							<!-- end: RESPONSIVE MENU TOGGLER -->
+							<!-- start: LOGO -->
+							<a class="navbar-brand" href="index.html" ><img src="assets/images/g3546-14.png" alt="TapOn"></a>
+						</div>  <!-- end: LOGO navbar-header -->
+				
+				<div class="navbar-tools">
+					<!-- start: TOP NAVIGATION MENU -->
+					<ul class="nav navbar-right">
+						<!-- start: TO-DO DROPDOWN -->
+						<li class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<i class="clip-list-5"></i>
+								<span class="badge"> 12</span>
+							</a>
+										
+							<ul class="dropdown-menu todo">
+													
+								<li>
+									<span class="dropdown-menu-title"> You have 12 pending tasks</span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+													<span class="label label-danger" style="opacity: 1;"> today</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc" style="opacity: 1; text-decoration: none;"> Call Mechanic </span>
+													<span class="label label-danger" style="opacity: 1;"> today</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc"> Hire Event Planner</span>
+													<span class="label label-warning"> tommorow</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc">Prayer Meeting</span>
+													<span class="label label-warning"> tommorow</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc"> Go to dinner with hubby</span>
+													<span class="label label-success"> this week</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc"> Hire Baby Sitter</span>
+													<span class="label label-success"> this week</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc"> Meet Zenith Bank Manager</span>
+													<span class="label label-info"> this month</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc"> Trip to Jos for Business</span>
+													<span class="label label-info"> this month</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc" style="opacity: 1; text-decoration: none;">Purchase TapOn Tags for Staff</span>
+													<span class="label label-danger" style="opacity: 1;"> today</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc" style="opacity: 1; text-decoration: none;"> Call Capenter for Wardrobe</span>
+													<span class="label label-danger" style="opacity: 1;"> today</span>
+												</a>
+											</li>
+											<li>
+												<a class="todo-actions" href="javascript:void(0)">
+													<i class="fa fa-square-o"></i>
+													<span class="desc"> Utako market for Yams</span>
+													<span class="label label-warning"> tommorow</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="view-all">
+									<a href="javascript:void(0)">
+										See all tasks <i class="fa fa-arrow-circle-o-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<!-- end: TO-DO DROPDOWN-->
+						<!-- start: TapOn NOTIFICATION DROPDOWN -->
+						<li class="dropdown">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<i class="clip-notification-2"></i>
+								<span class="badge"> 11</span>
+							</a>
+							<ul class="dropdown-menu notifications">
+								<li>
+									<span class="dropdown-menu-title"> You have 11 TapOn notifications</span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-primary"><i class="fa fa-user"></i></span>
+													<span class="message"> TapOn at Awolowo Road</span>
+													<span class="time"> 1 min</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-success"><i class="fa fa-comment"></i></span>
+													<span class="message"> FunnyBone Channel</span>
+													<span class="time"> 7 min</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-success"><i class="fa fa-comment"></i></span>
+													<span class="message"> BasketMouth Skits - TapOn Advice</span>
+													<span class="time"> 8 min</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-success"><i class="fa fa-comment"></i></span>
+													<span class="message"> Africa Magic - Comic Strip</span>
+													<span class="time"> 16 min</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-primary"><i class="fa fa-user"></i></span>
+													<span class="message"> New user registration</span>
+													<span class="time"> 36 min</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-warning"><i class="fa fa-shopping-cart"></i></span>
+													<span class="message"> TapOn at ShopRite Mall</span>
+													<span class="time"> 1 hour</span>
+												</a>
+											</li>
+											<li class="warning">
+												<a href="javascript:void(0)">
+													<span class="label label-danger"><i class="fa fa-user"></i></span>
+													<span class="message"> User deleted account</span>
+													<span class="time"> 2 hour</span>
+												</a>
+											</li>
+											<li class="warning">
+												<a href="javascript:void(0)">
+													<span class="label label-danger"><i class="fa fa-shopping-cart"></i></span>
+													<span class="message"> SilverBird - Shopping Plaza</span>
+													<span class="time"> 6 hour</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-success"><i class="fa fa-shopping-cart"></i></span>
+													<span class="message"> TapOn at Cash and Carry</span>
+													<span class="time"> yesterday</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-primary"><i class="fa fa-user"></i></span>
+													<span class="message"> User TapOn @ Festac</span>
+													<span class="time"> yesterday</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-primary"><i class="fa fa-user"></i></span>
+													<span class="message"> User TapOn @ Ikeja</span>
+													<span class="time"> yesterday</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-success"><i class="fa fa-user"></i></span>
+													<span class="message"> User TapOn @ Ikoyi</span>
+													<span class="time"> yesterday</span>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">
+													<span class="label label-success"><i class="fa fa-user"></i></span>
+													<span class="message"> User TapOn @ Lekki</span>
+													<span class="time"> yesterday</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="view-all">
+									<a href="javascript:void(0)">
+										See all notifications <i class="fa fa-arrow-circle-o-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<!-- end: NOTIFICATION DROPDOWN -->
+						<!-- start: MESSAGE DROPDOWN -->
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
+								<i class="clip-bubble-3"></i>
+								<span class="badge"> 9</span>
+							</a>
+							<ul class="dropdown-menu posts">
+								<li>
+									<span class="dropdown-menu-title"> You have 9 messages</span>
+								</li>
+								<li>
+									<div class="drop-down-wrapper">
+										<ul>
+											<li>
+												<a href="javascript:;">
+													<div class="clearfix">
+														<div class="thread-image">
+															<img alt="" src="./assets/images/avatar-2.jpg">
+														</div>
+														<div class="thread-content">
+															<span class="author">Amaka Obienui</span>
+															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
+															<span class="time"> Just Now</span>
+														</div>
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:;">
+													<div class="clearfix">
+														<div class="thread-image">
+															<img alt="" src="./assets/images/avatar-1.jpg">
+														</div>
+														<div class="thread-content">
+															<span class="author">Kazim Hamza</span>
+															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
+															<span class="time">2 mins</span>
+														</div>
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:;">
+													<div class="clearfix">
+														<div class="thread-image">
+															<img alt="" src="./assets/images/avatar-3.jpg">
+														</div>
+														<div class="thread-content">
+															<span class="author">Steven Thompson</span>
+															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
+															<span class="time">8 hrs</span>
+														</div>
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:;">
+													<div class="clearfix">
+														<div class="thread-image">
+															<img alt="" src="./assets/images/avatar-1.jpg">
+														</div>
+														<div class="thread-content">
+															<span class="author">Kazim Hamza</span>
+															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
+															<span class="time">9 hrs</span>
+														</div>
+													</div>
+												</a>
+											</li>
+											<li>
+												<a href="javascript:;">
+													<div class="clearfix">
+														<div class="thread-image">
+															<img alt="" src="./assets/images/avatar-5.jpg">
+														</div>
+														<div class="thread-content">
+															<span class="author">Wole Ogunjimi</span>
+															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
+															<span class="time">14 hrs</span>
+														</div>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="view-all">
+									<a href="pages_messages.html">
+										See all messages <i class="fa fa-arrow-circle-o-right"></i>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<!-- end: MESSAGE DROPDOWN -->
+						<!-- start: USER DROPDOWN -->
+						<li class="dropdown current-user">
+							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+								<img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
+								<span class="username">Kazim Hamza</span>
+								<i class="clip-chevron-down"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#" onclick="loadPage('tapon_myprofile.html')">
+										<i class="clip-user-2"></i>
+										&nbsp;My Profile
+									</a>
+								</li>
+								
+								<li>
+									<a href="#" onclick="loadPage('tapon_mycalendar.html')">
+										<i class="clip-calendar"></i>
+										&nbsp;My Calendar
+									</a>
+								<li class="divider"></li>
+
+								<li>
+									<a href="#" onclick="loadPage('tapon_becomeagent.html')" ><i class="clip-user-plus"></i>
+										&nbsp;Become TapOn Agent </a>
+								</li>
+								<li>
+									<a href="#" onclick="loadPage('tapon_context.html')"><i class="clip-bubble-4"></i>
+										&nbsp;Create Context </a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a href="#" onclick="navigator.app.exitApp()"><i class="clip-exit"></i>
+										&nbsp;Exit TapOn </a>
+								</li>
+						
+							</ul>
+						</li>
+						<!-- end: USER DROPDOWN -->
+					</ul>
+					<!-- end: TOP NAVIGATION MENU -->
+				</div>
+				
+				
+			</div>
+			<!-- end: TOP NAVIGATION CONTAINER -->
+		</div>
+		<!-- end: HEADER -->
+		<!-- start: MAIN CONTAINER -->
+		<div class="main-container">
+			
+			<div class="navbar-content">
+
+					<!-- start: PAGE -->
+					<div class="main-content">
+						
+						<!-- start: PANEL CONFIGURATION MODAL FORM -->
+						<div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+							
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+											&times;
+										</button>
+										<h4 class="modal-title">Panel Configuration</h4>
+									</div>
+									<div class="modal-body">
+										Here will be a configuration form
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">
+											Close
+										</button>
+										<button type="button" class="btn btn-primary">
+											Save changes
+										</button>
+									</div>
+								</div>
+								<!-- /.modal-content -->
+							</div> <!-- /.modal-dialog -->
+							
+						</div> <!-- /.modal -->
+						<!-- end: SPANEL CONFIGURATION MODAL FORM -->
+				
+						<div class="container">
+							<!-- start: PAGE HEADER -->
+							<div class="row">
+								<div class="col-sm-12">
+								
+								</div>
+							
+						<div class="main-content" id="main-content">
+		
+		
+		
+
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<!-- end: MAIN CONTAINER -->
+	</div>	 
+		<!-- start: FOOTER -->
+		<div class="footer clearfix">
+			<div class="footer-inner">
+				2014 &copy; TapOn - The Safety Social Network.
+			</div>
+			<div class="footer-items">
+				<span class="go-top"><i class="clip-chevron-up"></i></span>
+			</div>
+		</div>
+		<!-- end: FOOTER -->
+	
+		<div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title">Event Management</h4>
+					</div>
+					<div class="modal-body"></div>
+					<div class="modal-footer">
+						<button type="button" data-dismiss="modal" class="btn btn-light-grey">
+							Close
+						</button>
+						<button type="button" class="btn btn-danger remove-event no-display">
+							<i class='fa fa-trash-o'></i> Delete Event
+						</button>
+						<button type='submit' class='btn btn-success save-event'>
+							<i class='fa fa-check'></i> Save
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="tag-enrolment" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+							&times;
+						</button>
+						<h4 class="modal-title">TapOn Tag Enrolment</h4>
+					</div>
+					<div class="modal-body"></div>
+					<div class="modal-footer">
+						<button type="button" data-dismiss="modal" class="btn btn-light-grey">
+							Close
+						</button>
+						<button type="button" class="btn btn-danger remove-event no-display">
+							<i class='fa fa-trash-o'></i> Enter Verify Code
+						</button>
+						<button type='submit' class='btn btn-success save-event'>
+							<i class='fa fa-check'></i> Enroll Tag
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- start: MAIN JAVASCRIPTS -->
+		
+		<!--[if lt IE 9]>
+		<script src="assets/plugins/respond.min.js"></script>
+		<script src="assets/plugins/excanvas.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<![endif]-->
+
+		<script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+		<script src="assets/plugins/blockUI/jquery.blockUI.js"></script>
+		<script src="assets/plugins/iCheck/jquery.icheck.min.js"></script>
+		<script src="assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+		<script src="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+		<script src="assets/plugins/less/less-1.5.0.min.js"></script>
+		<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+		<script src="assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+		<script src="assets/js/main.js"></script>
+		<!-- end: MAIN JAVASCRIPTS -->
+		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<script src="assets/plugins/flot/jquery.flot.js"></script>
+		<script src="assets/plugins/flot/jquery.flot.pie.js"></script>
+		<script src="assets/plugins/flot/jquery.flot.resize.min.js"></script>
+		<script src="assets/plugins/jquery.sparkline/jquery.sparkline.js"></script>
+		<script src="assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+		<script src="assets/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+		<script src="assets/plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
+		<script src="assets/js/index.js"></script>
+		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->	
+	
+		
+<script language="JavaScript" type="text/javascript">
+			jQuery(document).ready(function() {
+			//Register to the Push notification server for this platform
+				Main.init();
+				loadPage('tapon_timeline.html');
+				var tapevent_timer = setInterval(CheckForTap, (1 * 1000));
+				
+		/* Wait until device is ready to re-assign Back button */
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            document.addEventListener("backbutton", onBackKeyPress, false);
+        }
+        function onBackKeyPress() {
+   			window.location.href = "index.html";
+			e.preventDefault();
+        }
+	});
+		</script>
+		
+<script language="JavaScript" type="text/javascript">
+			var taponserver = 'http://54.85.29.26';
+			var _phoneNumber = localStorage.getItem("taponDEVICENUMBER");
+			var _tagNumber = localStorage.getItem("taponTAGNUMBER");
+			var url = taponserver + '/tapon/timer_check_for_tap_event.php?phoneNumber=' + _phoneNumber;
+			var urldata = taponserver + '/tapon/gprs_tag_enroll.php?phoneNumber=';
+			
+			
+
+				// Load page into url @param url  The url to load
+				function loadPage(url) {
+				//alert(url);
+					$('#main-content').load(url);
+				}
+				
+				// pause the check for tap event timer
+				function pauseTapeventcheck() {
+				//alert("Check for Tap Event Paused");
+					clearInterval(tapevent_timer); //clear interval
+				}
+				
+					/**
+				 * Load Full page into url
+				 * @param url  The url to load
+				 */
+				function loadFullPage(url) {
+					$('#full-content').hide('fast',loadContent);
+					function loadContent() {
+						$('#full-content').load(url,'',showNewContent())
+					}
+					function showNewContent() {
+						$('#full-content').show('fast');
+					}
+					return false;
+				}
+				
+					
+				function PerformLogOut() {
+				//Clear the device phone number to reset the app so it can ask for phone number the next time it is started
+				localStorage.removeItem("taponDEVICENUMBER");
+				localStorage.removeItem("taponDEVICEGUID");
+				window.location.href = "tapon_lock_screen.html";
+				}
+					
+				//Tag enrolment function
+				function tagEnrolment() {
+				//alert(urldata);
+				var $tmodal = $('#tag-enrolment');
+				$tmodal.modal({
+                    backdrop: 'static'
+                });
+				form = $("<form></form>");
+                form.append("<div class='row'></div>");
+                form.find(".row").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Target Device Number:</label><input class='form-control' value='"+localStorage.getItem("taponDEVICENUMBER")+"' type=text name='devicenumber'/></div></div>").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Tag Number To Enroll:</label><input class='form-control' value='' type=text name='tagnumber'/></div></div>");
+                $tmodal.find('.remove-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
+                    form.submit();
+                });
+				$tmodal.find('form').on('submit', function () {
+                    devicenumber = form.find("input[name='devicenumber']").val();
+					tagnumber = form.find("input[name='tagnumber']").val();
+					targeturldata = urldata+devicenumber + "&tagnumber=" + tagnumber + "*" + localStorage.getItem("taponDEVICEGUID");
+            //      alert(targeturldata);  
+				  
+				    $.ajax({
+                url: targeturldata,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+		//		alert(data);
+		     },
+            error: function (xhr, status, errorThrown) {
+               console.log("responseText: " + xhr.responseText);
+                console.log("status: " + xhr.status);
+                console.log("errorThrown: " + errorThrown);
+				}
+			});	
+				  
+                    $tmodal.modal('hide');
+                    return false;
+                });
+				}
+				
+				
+			//Gets the current messages from the server
+			function CheckForTap() {
+			// when the page first loads, get the routes from the DB and load them into the dropdown box. 
+			//alert("checking foe tap event");
+		   $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+				if (data['taps'] > 0) {
+			//	alert(data['taps']);
+				window.location.href = "tapon_poptap_screen.html";
+				}
+            //    console.log(data['taps']);
+            },
+            error: function (xhr, status, errorThrown) {
+               console.log("responseText: " + xhr.responseText);
+                console.log("status: " + xhr.status);
+                console.log("errorThrown: " + errorThrown);
+				}
+			});	  	      	
+		}
+
+
+		
+
+		
+</script>
+	</body>
+</html>
