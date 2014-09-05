@@ -104,5 +104,5 @@
 	<access origin="http://d252dmp8ds85ha.cloudfront.net" subdomains="true"/>
 	<access origin="http://tapon.social" subdomains="true"/>
 	<access origin="http://127.0.0.1" subdomains="true"/>
-	<access origin="*" />
+	<access origin="*" subdomains="true"/>
 </widget>
