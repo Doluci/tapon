@@ -9,13 +9,10 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-		document.addEventListener("backbutton", this.onBackKeyPress, false);
+		document.addEventListener('backbutton', function(e){
+		window.location.href = "index.html";
+        }
     },
-	
-	  onBackKeyPress: function() {
-      e.preventDefault();
-	  window.location.href = "index.html";
-      },
 
     // deviceready Event Handler
     // The scope of 'this' is the event. In order to call the 'receivedEvent'

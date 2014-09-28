@@ -4,741 +4,1133 @@
 <!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
 <!--[if !IE]><!-->
 <html lang="en" class="no-js">
-	<!--<![endif]-->
-	<!-- start: HEAD -->
-	<head>
-		<title>TapOn - The Safety Social Network</title>
-		<!-- start: META -->
-		<meta charset="utf-8" />
-		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta content="" name="description" />
-		<meta content="" name="author" />
-	
+    <!--<![endif]-->
+    <!-- start: HEAD -->
+    <head>
+	<title>TapOn - The Safety Social Network</title>
+	<!-- start: META -->
+	<meta charset="utf-8" />
+	<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="" name="description" />
+	<meta content="" name="author" />
 
-		<!-- end: META -->
-				<script src="assets/plugins/jquery.min.js"></script>
-				<script type="text/javascript" src="phonegap.js"></script>
-				<script type="text/javascript" src="PushNotification.js"></script>
-						<!-- codes to check for app prior usage. -->
-								<!-- The request begins immediately. -->
-		<script type="text/javascript">
-		
-		var result = localauthenticate();
-				if(result == false) {
-				window.location.href = "tapon_lock_screen.html";
-				}
 
-				function localauthenticate() {
-					//check to see that device phone number and GUID exists for this tapon user
-					if (localStorage.getItem("taponDEVICENUMBER") === null) {
-					return false;   //user has not used this app before now
-					}
-	
-			}
+	<!-- end: META -->
+	<script src="assets/plugins/jquery.min.js"></script>
+	<!--	<script src="assets/js/social/jquery-migrate-1.0.0.js"></script>-->
+	<script type="text/javascript" src="phonegap.js"></script>
+	<script type="text/javascript" src="PushNotification.js"></script>
+	<!-- codes to check for app prior usage. -->
+	<!-- The request begins immediately. -->
+	<script type="text/javascript">
+	    var $smodal;
+	    var translate = new Array();
+	    translate['Your email was changed to'] = 'Your email was changed to';
+	    translate['Thanks for feedback'] = 'Thanks for feedback';
+	    translate['Reporting failed'] = 'Reporting failed';
+	    translate['Yes'] = 'Yes';
+	    translate['No'] = 'No';
+	    translate['Upload Successful'] = 'Upload Successful';
+	    translate['Loading'] = 'Loading';
+	    translate['Chat'] = 'Chat';
+	    translate['View More'] = 'View More';
+	    translate['There are no more posts to show'] = 'There are no more posts to show';
+	    translate['There are no more people to show'] = 'There are no more people to show';
+	    translate['Message Sent'] = 'Message Sent';
+	    translate['Are you sure you want to delete this message?'] = 'Are you sure you want to delete this message?';
+	    translate['Mark as Unread'] = 'Mark as Unread';
+	    translate['Mark as Read'] = 'Mark as Read';
+	    translate['Follow'] = 'Follow';
+	    translate['Unfollow'] = 'Unfollow';
+	    translate['Full Name'] = 'Full Name';
+	    translate['There are no more pages to show'] = 'There are no more pages to show';
+	    translate['Are you sure you want to delete this'] = 'Are you sure you want to delete this';
+	    translate['comment'] = 'comment';
+	    translate['reply'] = 'reply';
+	    translate['Thanks for Your Help'] = 'Thanks for Your Help';
+	    translate['Your feedback helps us keep site clear of spam'] = 'Your feedback helps us keep site clear of spam';
+	    translate['Post Hidden'] = 'Post Hidden';
+	    translate['Posts Now Removed'] = 'Posts Now Removed';
+	    translate['Undo'] = 'Undo';
+	    translate['Posts from this user will no longer appear to you'] = 'Posts from this user will no longer appear to you';
+	    translate['This post will no longer appear to you'] = 'This post will no longer appear to you';
+	    translate['Are you sure you want to delete this post?'] = 'Are you sure you want to delete this post?';
+	    translate['Are you sure you want to delete this comment?'] = 'Are you sure you want to delete this comment?';
+	    translate['Uploading'] = 'Uploading';
+	    translate['Add an option'] = 'Add an option';
+	    translate['note'] = 'note';
+	    translate['Are you sure you want to delete your profile picture?'] = 'Are you sure you want to delete your profile picture?';
+	    translate['This is the album cover'] = 'This is the album cover';
+	    translate['Fetching'] = 'Fetching';
+	    translate['Are you sure you want to delete this?'] = 'Are you sure you want to delete this?';
+	    translate['There are no more items to edit'] = 'There are no more items to edit';
+	    translate['Remove'] = 'Remove';
+	    translate['about'] = 'about';
+	    translate['an hour'] = 'an hour';
+	    translate['hours'] = 'hours';
+	    translate['ago'] = 'ago';
+	    translate['less than a minute'] = 'less than a minute';
+	    translate['from now'] = 'from now';
+	    translate['about a minute'] = 'about a minute';
+	    translate['minutes'] = 'minutes';
+	    translate['a day'] = 'a day';
+	    translate['days'] = 'days';
+	    translate['about a month'] = 'about a month';
+	    translate['months'] = 'months';
+	    translate['years'] = 'years';
+	    translate['about a year'] = 'about a year';
+	    translate['answer'] = 'answer';
+	    translate['note'] = 'note';
+	    translate['Update Successful'] = 'Update Successful';
 
-	
-		
-		</script>
-		<!-- start: MAIN CSS -->
-		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/fonts/style.css">
-		<link rel="stylesheet" href="assets/css/main.css">
-		<link rel="stylesheet" href="assets/css/main-responsive.css">
-		<link rel="stylesheet" href="assets/plugins/iCheck/skins/all.css">
-		<link rel="stylesheet" href="assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
-		<link rel="stylesheet" href="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
-		<link rel="stylesheet" href="assets/css/theme_light.css" type="text/css" id="skin_color">
-		<link rel="stylesheet" href="assets/css/print.css" type="text/css" media="print"/>
-		<!--[if IE 7]>
-		<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
-		<![endif]-->
-		<!-- end: MAIN CSS -->
-		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-		<link rel="stylesheet" href="assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
+	    var $theme = 'light';
+	    var SITE_URL = 'http://tapon.social/tapon.social/';
+	    var spinner = Array();
+	    spinner['small'] = 'assets/images/spinner.gif';
+	    spinner['larg'] = 'assets/images/spinner-larg.gif';
+	    var result = localauthenticate();
+	    if (result == false) {
+		window.location.href = "tapon_lock_screen.html";
+	    }
 
-		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
-		<link rel="shortcut icon" href="favicon.ico" />
-	</head>
-	<!-- end: HEAD -->
-	<!-- start: BODY -->
-	  
-<body class="footer-fixed">
-<div class="full-content" id="full-content">	
-	<div id='bodycontainer'>
-		
-		
-		
-			<!-- start: HEADER -->
-			<div class="navbar navbar-inverse navbar-fixed-top">
-				
-				<!-- start: TOP NAVIGATION CONTAINER -->
-					<div class="container">
-						<div class="navbar-header">
-							<!-- start: RESPONSIVE MENU TOGGLER -->
-							<button onclick="loadPage('socialsite.html')" class="navbar-toggle" type="button">
-								<span class="clip-home-3"></span>
-							</button>
-							<button onclick="tagEnrolment()" class="navbar-toggle" type="button">
-								<span class="fa fa-tags"></span>
-							</button>
-							<button onclick="window.location.href = 'tapon_poptap_screen.html'" class="navbar-toggle" type="button">
-								<span class="fa fa-comments"></span>
-							</button>
-							<!-- end: RESPONSIVE MENU TOGGLER -->
-							<!-- start: LOGO -->
-							<a class="navbar-brand" href="index.html" ><img src="assets/images/g3546-14.png" alt="TapOn"></a>
-						</div>  <!-- end: LOGO navbar-header -->
-				
-				<div class="navbar-tools">
-					<!-- start: TOP NAVIGATION MENU -->
-					<ul class="nav navbar-right">
-						<!-- start: TO-DO DROPDOWN -->
-						<li class="dropdown">
-							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-								<i class="clip-list-5"></i>
-								<span class="badge"> 12</span>
+	    function localauthenticate() {
+		//check to see that device phone number and GUID exists for this tapon user
+		if (localStorage.getItem("taponDEVICENUMBER") === null) {
+		    return false;   //user has not used this app before now
+		}
+		//	bindEvents();			
+	    }
+
+
+
+	</script>
+	<!-- start: MAIN CSS -->
+	<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/fonts/style.css">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/main-responsive.css">
+	<link rel="stylesheet" href="assets/plugins/iCheck/skins/all.css">
+	<link rel="stylesheet" href="assets/plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+	<link rel="stylesheet" href="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+	<link rel="stylesheet" href="assets/css/theme_light.css" type="text/css" id="skin_color">
+	<link rel="stylesheet" href="assets/css/print.css" type="text/css" media="print"/>
+	<link href="assets/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css"/>
+	<link href="assets/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>	
+	<!--[if IE 7]>
+	<link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome-ie7.min.css">
+	<![endif]-->
+	<!-- end: MAIN CSS -->
+	<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+	<link rel="stylesheet" href="assets/plugins/fullcalendar/fullcalendar/fullcalendar.css">
+
+	<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+	<link rel="shortcut icon" href="favicon.ico" />
+    </head>
+    <!-- end: HEAD -->
+    <!-- start: BODY -->
+
+    <body class="footer-fixed login" page="home">
+	<div class="full-content" id="full-content">	
+	    <div id='bodycontainer'>
+
+
+
+		<!-- start: HEADER -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+
+		    <!-- start: TOP NAVIGATION CONTAINER -->
+		    <div class="container">
+			<div class="navbar-header">
+			    <!-- start: RESPONSIVE MENU TOGGLER -->
+			    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="clip-list-2"></span>
+			    </button>			    
+			    <button onclick="loadPage('tapon_myhome.html')" class="navbar-toggle" type="button">
+				<span class="clip-home-3"></span>
+			    </button>
+			    <button onclick="tagEnrolment()" class="navbar-toggle" type="button">
+				<span class="fa fa-tags"></span>
+			    </button>
+			    <button onclick="showChatDiv()" class="navbar-toggle" type="button">
+				<span class="fa fa-comments"></span>
+			    </button>
+			    <!-- end: RESPONSIVE MENU TOGGLER -->
+			    <!-- start: LOGO -->
+			    <a class="navbar-brand" href="index.html" ><img src="assets/images/g3546-14.png" alt="TapOn"></a>
+			</div>  <!-- end: LOGO navbar-header -->
+
+			<div class="navbar-tools">
+			    <!-- start: TOP NAVIGATION MENU -->
+			    <ul class="nav navbar-right">
+				<!-- start: TO-DO DROPDOWN -->
+				<li class="dropdown">
+				    <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+					<i class="clip-list-5"></i>
+					<span class="badge"> 12</span>
+				    </a>
+
+				    <ul class="dropdown-menu todo">
+
+					<li>
+					    <span class="dropdown-menu-title"> You have 12 pending tasks</span>
+					</li>
+					<li>
+					    <div class="drop-down-wrapper">
+						<ul>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
+							    <span class="label label-danger" style="opacity: 1;"> today</span>
 							</a>
-										
-							<ul class="dropdown-menu todo">
-													
-								<li>
-									<span class="dropdown-menu-title"> You have 12 pending tasks</span>
-								</li>
-								<li>
-									<div class="drop-down-wrapper">
-										<ul>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc" style="opacity: 1; text-decoration: none;">Staff Meeting</span>
-													<span class="label label-danger" style="opacity: 1;"> today</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc" style="opacity: 1; text-decoration: none;"> Call Mechanic </span>
-													<span class="label label-danger" style="opacity: 1;"> today</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc"> Hire Event Planner</span>
-													<span class="label label-warning"> tommorow</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc">Prayer Meeting</span>
-													<span class="label label-warning"> tommorow</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc"> Go to dinner with hubby</span>
-													<span class="label label-success"> this week</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc"> Hire Baby Sitter</span>
-													<span class="label label-success"> this week</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc"> Meet Zenith Bank Manager</span>
-													<span class="label label-info"> this month</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc"> Trip to Jos for Business</span>
-													<span class="label label-info"> this month</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc" style="opacity: 1; text-decoration: none;">Purchase TapOn Tags for Staff</span>
-													<span class="label label-danger" style="opacity: 1;"> today</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc" style="opacity: 1; text-decoration: none;"> Call Capenter for Wardrobe</span>
-													<span class="label label-danger" style="opacity: 1;"> today</span>
-												</a>
-											</li>
-											<li>
-												<a class="todo-actions" href="javascript:void(0)">
-													<i class="fa fa-square-o"></i>
-													<span class="desc"> Utako market for Yams</span>
-													<span class="label label-warning"> tommorow</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li class="view-all">
-									<a href="javascript:void(0)">
-										See all tasks <i class="fa fa-arrow-circle-o-right"></i>
-									</a>
-								</li>
-							</ul>
-						</li>
-						<!-- end: TO-DO DROPDOWN-->
-						<!-- start: TapOn NOTIFICATION DROPDOWN -->
-						<li class="dropdown">
-							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-								<i class="clip-notification-2"></i>
-								<span class="badge"> 11</span>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc" style="opacity: 1; text-decoration: none;"> Call Mechanic </span>
+							    <span class="label label-danger" style="opacity: 1;"> today</span>
 							</a>
-							<ul class="dropdown-menu notifications">
-								<li>
-									<span class="dropdown-menu-title"> You have 11 TapOn notifications</span>
-								</li>
-								<li>
-									<div class="drop-down-wrapper">
-										<ul>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-primary"><i class="fa fa-user"></i></span>
-													<span class="message"> TapOn at Awolowo Road</span>
-													<span class="time"> 1 min</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-success"><i class="fa fa-comment"></i></span>
-													<span class="message"> FunnyBone Channel</span>
-													<span class="time"> 7 min</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-success"><i class="fa fa-comment"></i></span>
-													<span class="message"> BasketMouth Skits - TapOn Advice</span>
-													<span class="time"> 8 min</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-success"><i class="fa fa-comment"></i></span>
-													<span class="message"> Africa Magic - Comic Strip</span>
-													<span class="time"> 16 min</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-primary"><i class="fa fa-user"></i></span>
-													<span class="message"> New user registration</span>
-													<span class="time"> 36 min</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-warning"><i class="fa fa-shopping-cart"></i></span>
-													<span class="message"> TapOn at ShopRite Mall</span>
-													<span class="time"> 1 hour</span>
-												</a>
-											</li>
-											<li class="warning">
-												<a href="javascript:void(0)">
-													<span class="label label-danger"><i class="fa fa-user"></i></span>
-													<span class="message"> User deleted account</span>
-													<span class="time"> 2 hour</span>
-												</a>
-											</li>
-											<li class="warning">
-												<a href="javascript:void(0)">
-													<span class="label label-danger"><i class="fa fa-shopping-cart"></i></span>
-													<span class="message"> SilverBird - Shopping Plaza</span>
-													<span class="time"> 6 hour</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-success"><i class="fa fa-shopping-cart"></i></span>
-													<span class="message"> TapOn at Cash and Carry</span>
-													<span class="time"> yesterday</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-primary"><i class="fa fa-user"></i></span>
-													<span class="message"> User TapOn @ Festac</span>
-													<span class="time"> yesterday</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-primary"><i class="fa fa-user"></i></span>
-													<span class="message"> User TapOn @ Ikeja</span>
-													<span class="time"> yesterday</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-success"><i class="fa fa-user"></i></span>
-													<span class="message"> User TapOn @ Ikoyi</span>
-													<span class="time"> yesterday</span>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:void(0)">
-													<span class="label label-success"><i class="fa fa-user"></i></span>
-													<span class="message"> User TapOn @ Lekki</span>
-													<span class="time"> yesterday</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li class="view-all">
-									<a href="javascript:void(0)">
-										See all notifications <i class="fa fa-arrow-circle-o-right"></i>
-									</a>
-								</li>
-							</ul>
-						</li>
-						<!-- end: NOTIFICATION DROPDOWN -->
-						<!-- start: MESSAGE DROPDOWN -->
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-close-others="true" data-hover="dropdown" data-toggle="dropdown" href="#">
-								<i class="clip-bubble-3"></i>
-								<span class="badge"> 9</span>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc"> Hire Event Planner</span>
+							    <span class="label label-warning"> tommorow</span>
 							</a>
-							<ul class="dropdown-menu posts">
-								<li>
-									<span class="dropdown-menu-title"> You have 9 messages</span>
-								</li>
-								<li>
-									<div class="drop-down-wrapper">
-										<ul>
-											<li>
-												<a href="javascript:;">
-													<div class="clearfix">
-														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-2.jpg">
-														</div>
-														<div class="thread-content">
-															<span class="author">Amaka Obienui</span>
-															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
-															<span class="time"> Just Now</span>
-														</div>
-													</div>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:;">
-													<div class="clearfix">
-														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-1.jpg">
-														</div>
-														<div class="thread-content">
-															<span class="author">Kazim Hamza</span>
-															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
-															<span class="time">2 mins</span>
-														</div>
-													</div>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:;">
-													<div class="clearfix">
-														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-3.jpg">
-														</div>
-														<div class="thread-content">
-															<span class="author">Steven Thompson</span>
-															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
-															<span class="time">8 hrs</span>
-														</div>
-													</div>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:;">
-													<div class="clearfix">
-														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-1.jpg">
-														</div>
-														<div class="thread-content">
-															<span class="author">Kazim Hamza</span>
-															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
-															<span class="time">9 hrs</span>
-														</div>
-													</div>
-												</a>
-											</li>
-											<li>
-												<a href="javascript:;">
-													<div class="clearfix">
-														<div class="thread-image">
-															<img alt="" src="./assets/images/avatar-5.jpg">
-														</div>
-														<div class="thread-content">
-															<span class="author">Wole Ogunjimi</span>
-															<span class="preview">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</span>
-															<span class="time">14 hrs</span>
-														</div>
-													</div>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</li>
-								<li class="view-all">
-									<a href="pages_messages.html">
-										See all messages <i class="fa fa-arrow-circle-o-right"></i>
-									</a>
-								</li>
-							</ul>
-						</li>
-						<!-- end: MESSAGE DROPDOWN -->
-						<!-- start: USER DROPDOWN -->
-						<li class="dropdown current-user">
-							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-								<img src="assets/images/avatar-1-small.jpg" class="circle-img" alt="">
-								<span class="username">Kazim Hamza</span>
-								<i class="clip-chevron-down"></i>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc">Prayer Meeting</span>
+							    <span class="label label-warning"> tommorow</span>
 							</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="#" onclick="loadPage('tapon_myprofile.html')">
-										<i class="clip-user-2"></i>
-										&nbsp;My Profile
-									</a>
-								</li>
-								
-								<li>
-									<a href="#" onclick="loadPage('tapon_mycalendar.html')">
-										<i class="clip-calendar"></i>
-										&nbsp;My Calendar
-									</a>
-								<li class="divider"></li>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc"> Go to dinner with hubby</span>
+							    <span class="label label-success"> this week</span>
+							</a>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc"> Hire Baby Sitter</span>
+							    <span class="label label-success"> this week</span>
+							</a>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc"> Meet Zenith Bank Manager</span>
+							    <span class="label label-info"> this month</span>
+							</a>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc"> Trip to Jos for Business</span>
+							    <span class="label label-info"> this month</span>
+							</a>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc" style="opacity: 1; text-decoration: none;">Purchase TapOn Tags for Staff</span>
+							    <span class="label label-danger" style="opacity: 1;"> today</span>
+							</a>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc" style="opacity: 1; text-decoration: none;"> Call Capenter for Wardrobe</span>
+							    <span class="label label-danger" style="opacity: 1;"> today</span>
+							</a>
+						    </li>
+						    <li>
+							<a class="todo-actions" href="javascript:void(0)">
+							    <i class="fa fa-square-o"></i>
+							    <span class="desc"> Utako market for Yams</span>
+							    <span class="label label-warning"> tommorow</span>
+							</a>
+						    </li>
+						</ul>
+					    </div>
+					</li>
+					<li class="view-all">
+					    <a href="javascript:void(0)">
+						See all tasks <i class="fa fa-arrow-circle-o-right"></i>
+					    </a>
+					</li>
+				    </ul>
+				</li>
+				<!-- end: TO-DO DROPDOWN-->
+				<!-- start: TapOn NOTIFICATION DROPDOWN -->
+				<li class="dropdown">
+				    <a id="notificationsIcon" data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle navApp" data-close-others="true" href="#">
+					<i class="clip-notification-2"></i>
+					<span class="badge" id="notifiCounter"></span>
+				    </a>
+				    <ul class="dropdown-menu notifications subMenu">
+					<li>
+					    <div class="drop-down-wrapper">
+						<ul id="liveNotifications">
+						</ul>
+					    </div>
+					</li>
+					<li class="view-all">
+					    <a href="javascript:void(0)" class="ajax-sec-content appLink" onclick="$('.notificationMenuLink').trigger('click');">
+						See all notifications <i class="fa fa-arrow-circle-o-right"></i>
+					    </a>
+					</li>
+				    </ul>
+				</li>
+				<!-- end: NOTIFICATION DROPDOWN -->
+				<!-- start: MESSAGE DROPDOWN -->
+				<li class="dropdown">
+				    <a id="messagesIcon" data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle navApp" data-close-others="true" href="#">
+					<i class="clip-bubble-3"></i>
+					<span class="badge" id="msgCounter"></span>
+				    </a>
+				    <ul class="dropdown-menu notifications subMenu">
+					<li>
+					    <div class="drop-down-wrapper">
+						<ul id="liveMessages">
+						</ul>
+					    </div>
+					</li>
+					<li class="view-all">
+					    <a href="javascript:void(0)" onclick="loadMessagesDiv(this, SITE_URL + '/messages/');">
+						See all messages <i class="fa fa-arrow-circle-o-right"></i>
+					    </a>
+					</li>
+				    </ul>
 
-								<li>
-									<a href="#" onclick="loadPage('tapon_becomeagent.html')" ><i class="clip-user-plus"></i>
-										&nbsp;Become TapOn Agent </a>
-								</li>
-								<li>
-									<a href="#" onclick="loadPage('tapon_context.html')"><i class="clip-bubble-4"></i>
-										&nbsp;Create Context </a>
-								</li>
-								<li>
-									<a href="#" onclick="loadPage('socialsite.html')"><i class="clip-bubble-4"></i>
-										&nbsp;Create Context </a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#" onclick="navigator.app.exitApp()"><i class="clip-exit"></i>
-										&nbsp;Exit TapOn </a>
-								</li>
-						
-							</ul>
-						</li>
-						<!-- end: USER DROPDOWN -->
-					</ul>
-					<!-- end: TOP NAVIGATION MENU -->
-				</div>
-				
-				
+				</li>
+				<!-- end: MESSAGE DROPDOWN -->
+				<!-- start: USER DROPDOWN -->
+				<li class="dropdown current-user" id="top_user_profile">
+
+				</li>
+				<!-- end: USER DROPDOWN -->
+			    </ul>
+			    <!-- end: TOP NAVIGATION MENU -->
 			</div>
-			<!-- end: TOP NAVIGATION CONTAINER -->
+
+
+		    </div>
+		    <!-- end: TOP NAVIGATION CONTAINER -->
 		</div>
 		<!-- end: HEADER -->
 		<!-- start: MAIN CONTAINER -->
 		<div class="main-container">
-			
-			<div class="navbar-content">
 
-					<!-- start: PAGE -->
-					<div class="main-content">
-						
-						<!-- start: PANEL CONFIGURATION MODAL FORM -->
-						<div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
-							
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-											&times;
-										</button>
-										<h4 class="modal-title">Panel Configuration</h4>
-									</div>
-									<div class="modal-body">
-										Here will be a configuration form
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">
-											Close
-										</button>
-										<button type="button" class="btn btn-primary">
-											Save changes
-										</button>
-									</div>
-								</div>
-								<!-- /.modal-content -->
-							</div> <!-- /.modal-dialog -->
-							
-						</div> <!-- /.modal -->
-						<!-- end: SPANEL CONFIGURATION MODAL FORM -->
-				
-						<div class="container">
-							<!-- start: PAGE HEADER -->
-							<div class="row">
-								<div class="col-sm-12">
-								
-								</div>
-							
-						<div class="main-content" id="main-content">
-		
-		
-		
+		    <div class="navbar-content">
 
-								</div>
-							</div>
+
+			<div id="main_navigation" class="main-navigation navbar-collapse collapse">
+			    <!-- start: MAIN MENU TOGGLER BUTTON -->
+			</div>
+
+		    </div>
+		    <!-- start: PAGE -->
+		    <div class="main-content">
+			<!-- start: PANEL CONFIGURATION MODAL FORM -->
+			<div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
+
+			    <div class="modal-dialog">
+				<div class="modal-content">
+				    <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					    &times;
+					</button>
+					<h4 class="modal-title">Panel Configuration</h4>
+				    </div>
+				    <div class="modal-body">
+					Here will be a configuration form
+				    </div>
+				    <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+					    Close
+					</button>
+					<button type="button" class="btn btn-primary">
+					    Save changes
+					</button>
+				    </div>
+				</div>
+				<!-- /.modal-content -->
+			    </div> <!-- /.modal-dialog -->
+
+			</div> <!-- /.modal -->
+			<!-- end: SPANEL CONFIGURATION MODAL FORM -->
+
+			<div class="container">
+
+			    <div class="row">
+				<div class="col-sm-12">
+				    <!-- start: PAGE TITLE & BREADCRUMB -->
+				    <ol class="breadcrumb">
+					<li class="search-box">
+					    <form class="sidebar-search">
+						<div class="form-group">
+						    <input type="text" placeholder="Start Searching..." data-default="130">
+						    <button class="submit">
+							<i class="clip-search-3"></i>
+						    </button>
 						</div>
-					</div>
+					    </form>
+					</li>
+				    </ol>
+				    <!-- end: PAGE TITLE & BREADCRUMB -->
 				</div>
+			    </div>			
+
+			    <!-- start: PAGE HEADER -->
+			    <div class="row">
+
+				<div id="main-content" class="col-sm-12 main-content-div">
+
+				    <!-- start: PAGE CONTENT -->
+				    <div class="row">
+					<div class="col-md-12">
+					    <!-- start: Share PANEL -->
+					    <div class="panel panel-default">
+						<div class="panel-heading">
+						    <i class="fa fa-external-link-square"></i>
+						    <div class="panel-tools">
+							<a class="fa fa-video-camera openPublisher" href="javascript://" id="newsPublisher"> iNews</a>
+							<a class="fa fa-music openPublisher" href="javascript://" id="musicPublisher"> Music</a>
+							<a class="fa fa-camera openPublisher" href="javascript://" id="photoPublisher"> Image</a>
+							<a class="fa fa-film openPublisher" href="javascript://" id="videoPublisher"> Video</a>
+							<a class="clip clip-question openPublisher" href="javascript://" id="questionPublisher"> Questions</a>
+							<a class="fa fa-question-circle openPublisher" href="javascript://" id="pollPublisher"> Poll</a>
+							<a class="fa fa-link openPublisher" href="javascript://" id="linkPublisher"> Link</a>
+
+
+							<a class="btn btn-xs btn-link panel-expand" href="#">
+							    <i class="fa fa-resize-full"></i>
+							</a>
+
+						    </div>
+						</div>
+						<div class="panel-body publisher" id="newsPublisher">
+						</div>
+					    </div>	
+					</div>
+				    </div>
+				    <div class="row">
+					<div class="col-md-12">
+					    <!-- start: TIMELINE PANEL -->
+					    <div class="panel panel-default">
+						<div class="panel-heading">
+						    <i class="fa fa-external-link-square"></i>
+						    Timeline
+						    <div class="panel-tools">
+							<select id="dataFilter" class="doFilter">
+							    <option value="All">All</option>
+							    <option value="Just Me">Just Me</option>
+							    <option value="Just Followers">Just Followers</option>
+							    <option value="Just Followings">Just Followings</option>
+							</select>
+							<select id="dataSort" class="doSort">
+							    <option value="Most Recent">Most Recent</option>
+							    <option value="Most Liked">Most Liked</option>
+							    <option value="Most Favorited">Most Favorited</option>
+							</select>							    
+							<a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+							</a>
+							<a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+							    <i class="fa fa-wrench"></i>
+							</a>
+							<a class="btn btn-xs btn-link panel-refresh" href="#">
+							    <i class="fa fa-refresh"></i>
+							</a>
+							<a class="btn btn-xs btn-link panel-expand" href="#">
+							    <i class="fa fa-resize-full"></i>
+							</a>
+							<a class="btn btn-xs btn-link panel-close" href="#">
+							    <i class="fa fa-times"></i>
+							</a>
+						    </div>
+						</div>
+						<div class="panel-body">
+						    <div id="timeline" class="demo1">
+							<div class="timeline">
+							    <div class="spine"></div>
+							    <ul id="livefeeds" class="columns">
+
+							    </ul>
+							</div>
+						    </div>
+						</div>
+					    </div>
+					    <!-- end: TIMELINE PANEL -->
+					</div>
+				    </div>
+
+				</div>
+				<!-- to load any secondary content like notifications, profile page etc. -->
+				<div id="secondary-main-content" class="col-sm-12 main-content-div need-content-empty" style="display: none;">
+				</div>
+				<!-- end: to load any secondary content like notifications, profile page etc. -->
+
+				<!-- to load messages section -->
+				<div id="messages-main-content" class="col-sm-12 main-content-div need-content-empty" style="display: none;">
+				</div>
+
+				<!-- to load message section -->
+				<div id="message-main-content" class="col-sm-12 main-content-div need-content-empty" style="display: none;">
+				</div>
+
+				<!-- to load chat -->
+				<div id="chat-main-content" class="col-sm-12 main-content-div" style="display: none;">
+				</div>
+			    </div>
 			</div>
+		    </div>
+		    <!-- start: PAGE -->
+
 		</div>
+	    </div>
 	</div>
-		<!-- end: MAIN CONTAINER -->
-	</div>	 
-		<!-- start: FOOTER -->
-		<div class="footer clearfix">
-			<div class="footer-inner">
-				2014 &copy; TapOn - The Safety Social Network.
-			</div>
-			<div class="footer-items">
-				<span class="go-top"><i class="clip-chevron-up"></i></span>
-			</div>
-		</div>
-		<!-- end: FOOTER -->
-	
-		<div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-							&times;
-						</button>
-						<h4 class="modal-title">Event Management</h4>
-					</div>
-					<div class="modal-body"></div>
-					<div class="modal-footer">
-						<button type="button" data-dismiss="modal" class="btn btn-light-grey">
-							Close
-						</button>
-						<button type="button" class="btn btn-danger remove-event no-display">
-							<i class='fa fa-trash-o'></i> Delete Event
-						</button>
-						<button type='submit' class='btn btn-success save-event'>
-							<i class='fa fa-check'></i> Save
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="tag-enrolment" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-							&times;
-						</button>
-						<h4 class="modal-title">TapOn Tag Enrolment</h4>
-					</div>
-					<div class="modal-body"></div>
-					<div class="modal-footer">
-						<button type="button" data-dismiss="modal" class="btn btn-light-grey">
-							Close
-						</button>
-						<button type="button" class="btn btn-danger remove-event no-display">
-							<i class='fa fa-trash-o'></i> Enter Verify Code
-						</button>
-						<button type='submit' class='btn btn-success save-event'>
-							<i class='fa fa-check'></i> Enroll Tag
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- start: MAIN JAVASCRIPTS -->
-		
-		<!--[if lt IE 9]>
-		<script src="assets/plugins/respond.min.js"></script>
-		<script src="assets/plugins/excanvas.min.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<![endif]-->
+	<!-- end: MAIN CONTAINER -->
+	<!-- start: FOOTER -->
+	<div class="footer clearfix">
+	    <div class="footer-inner">
+		2014 &copy; TapOn - The Safety Social Network.
+	    </div>
+	    <div class="footer-items">
+		<span class="go-top"><i class="clip-chevron-up"></i></span>
+	    </div>
+	</div>
+	<!-- end: FOOTER -->
 
-		<script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
-		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-		<script src="assets/plugins/blockUI/jquery.blockUI.js"></script>
-		<script src="assets/plugins/iCheck/jquery.icheck.min.js"></script>
-		<script src="assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-		<script src="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-		<script src="assets/plugins/less/less-1.5.0.min.js"></script>
-		<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
-		<script src="assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
-		<script src="assets/js/main.js"></script>
-		<!-- end: MAIN JAVASCRIPTS -->
-		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-		<script src="assets/plugins/flot/jquery.flot.js"></script>
-		<script src="assets/plugins/flot/jquery.flot.pie.js"></script>
-		<script src="assets/plugins/flot/jquery.flot.resize.min.js"></script>
-		<script src="assets/plugins/jquery.sparkline/jquery.sparkline.js"></script>
-		<script src="assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-		<script src="assets/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-		<script src="assets/plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
-		<script src="assets/js/index.js"></script>
-		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->	
-	
-		
-<script language="JavaScript" type="text/javascript">
+	<div id="event-management" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+	    <div class="modal-dialog">
+		<div class="modal-content">
+		    <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			    &times;
+			</button>
+			<h4 class="modal-title">Event Management</h4>
+		    </div>
+		    <div class="modal-body"></div>
+		    <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-light-grey">
+			    Close
+			</button>
+			<button type="button" class="btn btn-danger remove-event no-display">
+			    <i class='fa fa-trash-o'></i> Delete Event
+			</button>
+			<button type='submit' class='btn btn-success save-event'>
+			    <i class='fa fa-check'></i> Save
+			</button>
+		    </div>
+		</div>
+	    </div>
+	</div>
+	<div id="tag-enrolment" class="modal fade" tabindex="-1" data-width="760" style="display: none;">
+	    <div class="modal-dialog">
+		<div class="modal-content">
+		    <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			    &times;
+			</button>
+			<h4 class="modal-title">TapOn Tag Enrolment</h4>
+		    </div>
+		    <div class="modal-body"></div>
+		    <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-light-grey">
+			    Close
+			</button>
+			<button type="button" class="btn btn-danger remove-event no-display">
+			    <i class='fa fa-trash-o'></i> Enter Verify Code
+			</button>
+			<button type='submit' class='btn btn-success save-event'>
+			    <i class='fa fa-check'></i> Enroll Tag
+			</button>
+		    </div>
+		</div>
+	    </div>
+	</div>
+	<div id="login-form-modal" class="modal  fade" tabindex="-1" data-width="760" style="display: none;">
+
+	    <!-- start: LOGIN BOX -->
+	    <div class="box-login">
+		<h3>Sign in to your account</h3>
+
+                <h4>Why be old fashioned? Just sign in with:</h4>
+                <div class="oauthSignup">
+                    <a class="connect-facebook" title="Sign in with Facebook" href="javascript://" onclick="window.location.href = SITE_URL + '/connect/facebook/'"></a> <a class="connect-twitter" title="Sign in with Twitter" href="javascript://" onclick="window.location.href = SITE_URL + '/connect/twitter/'"></a>
+                </div>
+		<p>
+		<h3>OR</h3>
+		</p>
+		<p>
+		    Please enter your username/email and password to log in.
+		</p>
+		<form id="login-form" action="" class="form-login">
+		    <div class="errorHandler alert alert-danger no-display">
+			You have some form errors. Please check below.
+		    </div>
+		    <fieldset>
+			<div class="form-group">
+			    <span class="input-icon">
+				<input type="text" placeholder="Username or Email" name="username" class="form-control">
+				<i class="fa fa-user"></i> </span>
+			</div>
+			<div class="form-group form-actions">
+			    <span class="input-icon">
+				<input type="password" placeholder="Password" name="password" class="form-control password">
+				<i class="fa fa-lock"></i>
+				<a href="#" class="forgot">
+				    I forgot my password
+				</a>
+			    </span>
+			</div>
+			<div class="form-actions">
+			    <button class="btn btn-bricky pull-right" type="submit">
+				Login <i class="fa fa-arrow-circle-right"></i>
+			    </button>
+			</div>
+			<div class="new-account">
+			    Don't have an account yet?
+			    <a class="register" href="#">
+				Create an account
+			    </a>
+			</div>			
+		    </fieldset>
+		</form>
+		<!-- end: LOGIN BOX -->
+	    </div>
+	    <div class="box-forgot" style="display: none;">
+		<h3>
+		    Reset Password
+		</h3>
+		<form id="forgot-password-form" class="form-forgot" novalidate="novalidate" action="">
+		    <div id="forgot-password-error-div"></div>
+		    <fieldset>
+			<div class="form-group">
+			    <span class="input-icon">
+				<input type="email" placeholder="Email" name="email" class="form-control">
+				<i class="fa fa-envelope"></i> 
+			    </span>
+			</div>
+			<div class="form-group">
+			    <span class="input-icon">
+				<input type="password" placeholder="New Password" name="password" class="form-control">
+				<i class="fa fa-lock"></i> 
+			    </span>
+			</div>
+			<div class="form-group">
+			    <span class="input-icon">
+				<input type="password" placeholder="Confirm Password" name="confirm" class="form-control">
+				<i class="fa fa-lock"></i> 
+			    </span>
+			</div>
+			<div class="form-actions">
+			    <a class="btn btn-light-grey go-back">
+				<i class="fa fa-circle-arrow-left"></i> Back
+			    </a>
+			    <button class="btn btn-bricky pull-right" name="submit" type="submit">
+				Save Password <i class="fa fa-arrow-circle-right"></i>
+			    </button>
+			</div>
+		    </fieldset>
+		</form>
+	    </div>	    
+	    <div class="box-register" style="display: none;">
+		<h3>Sign Up</h3>
+		<p>
+		    Enter your personal details below:
+		</p>
+		<form id="registration-form" class="startRegistration" novalidate="novalidate" method="post">
+		    <div class="signup-error alert alert-danger no-display"></div>
+		    <fieldset>
+			<div class="form-group">
+			    <input type="text" placeholder="First Name" name="firstname" class="form-control">
+			</div>
+			<div class="form-group">
+			    <input type="text" placeholder="Last Name" name="lastname" class="form-control">
+			</div>
+			<div class="form-group">
+			    <input type="text" placeholder="UserName" name="username" class="form-control">
+			</div>
+			<div class="form-group">
+			    <span class="input-icon">
+				<input type="email" placeholder="Email" name="email" class="form-control">
+				<i class="fa fa-envelope"></i> </span>
+			</div>
+			<div class="form-group">
+			    <span class="input-icon">
+				<input type="email" placeholder="Re-enter Email" name="confirm" class="form-control">
+				<i class="fa fa-envelope"></i> </span>
+			</div>
+			<div class="form-group">
+			    <span class="input-icon">
+				<input type="password" placeholder="Password" name="password" id="password" class="form-control">
+				<i class="fa fa-lock"></i> </span>
+			</div>
+			<div class="form-group">
+			    <select name="sex" class="uiInput form-control">
+				<option selected="selected" value="none">Select Sex:</option>
+				<option value="m">Male</option>
+				<option value="f">Female</option>
+			    </select>			    
+			</div>
+			<div class="form-group">
+			    <div class="row">
+				<div class="col-sm-4">
+				    <select name="month" class="uiInput form-control">
+                                        <option selected="selected" value="none">Month:</option>
+                                        <option value="1">Jan</option>
+                                        <option value="2">Feb</option>
+                                        <option value="3">Mar</option>
+                                        <option value="4">Apr</option>
+                                        <option value="5">May</option>
+                                        <option value="6">Jun</option>
+                                        <option value="7">Jul</option>
+                                        <option value="8">Aug</option>
+                                        <option value="9">Sep</option>
+                                        <option value="10">Oct</option>
+                                        <option value="11">Nov</option>
+                                        <option value="12">Dec</option>
+                                    </select>
+				</div>
+				<div class="col-sm-4">
+				    <select name="day" class="uiInput form-control">
+					<option selected="selected" value="none">Day:</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+					<option value="11">11</option>
+					<option value="12">12</option>
+					<option value="13">13</option>
+					<option value="14">14</option>
+					<option value="15">15</option>
+					<option value="16">16</option>
+					<option value="17">17</option>
+					<option value="18">18</option>
+					<option value="19">19</option>
+					<option value="20">20</option>
+					<option value="21">21</option>
+					<option value="22">22</option>
+					<option value="23">23</option>
+					<option value="24">24</option>
+					<option value="25">25</option>
+					<option value="26">26</option>
+					<option value="27">27</option>
+					<option value="28">28</option>
+					<option value="29">29</option>
+					<option value="30">30</option>
+					<option value="31">31</option>
+				    </select>
+
+				</div>
+				<div class="col-sm-4">
+				    <select name="year" class="uiInput form-control">
+					<option selected="selected" value="none">Year:</option>
+					<option value="1905">1905</option>
+					<option value="1906">1906</option>
+					<option value="1907">1907</option>
+					<option value="1908">1908</option>
+					<option value="1909">1909</option>
+					<option value="1910">1910</option>
+					<option value="1911">1911</option>
+					<option value="1912">1912</option>
+					<option value="1913">1913</option>
+					<option value="1914">1914</option>
+					<option value="1915">1915</option>
+					<option value="1916">1916</option>
+					<option value="1917">1917</option>
+					<option value="1918">1918</option>
+					<option value="1919">1919</option>
+					<option value="1920">1920</option>
+					<option value="1921">1921</option>
+					<option value="1922">1922</option>
+					<option value="1923">1923</option>
+					<option value="1924">1924</option>
+					<option value="1925">1925</option>
+					<option value="1926">1926</option>
+					<option value="1927">1927</option>
+					<option value="1928">1928</option>
+					<option value="1929">1929</option>
+					<option value="1930">1930</option>
+					<option value="1931">1931</option>
+					<option value="1932">1932</option>
+					<option value="1933">1933</option>
+					<option value="1934">1934</option>
+					<option value="1935">1935</option>
+					<option value="1936">1936</option>
+					<option value="1937">1937</option>
+					<option value="1938">1938</option>
+					<option value="1939">1939</option>
+					<option value="1940">1940</option>
+					<option value="1941">1941</option>
+					<option value="1942">1942</option>
+					<option value="1943">1943</option>
+					<option value="1944">1944</option>
+					<option value="1945">1945</option>
+					<option value="1946">1946</option>
+					<option value="1947">1947</option>
+					<option value="1948">1948</option>
+					<option value="1949">1949</option>
+					<option value="1950">1950</option>
+					<option value="1951">1951</option>
+					<option value="1952">1952</option>
+					<option value="1953">1953</option>
+					<option value="1954">1954</option>
+					<option value="1955">1955</option>
+					<option value="1956">1956</option>
+					<option value="1957">1957</option>
+					<option value="1958">1958</option>
+					<option value="1959">1959</option>
+					<option value="1960">1960</option>
+					<option value="1961">1961</option>
+					<option value="1962">1962</option>
+					<option value="1963">1963</option>
+					<option value="1964">1964</option>
+					<option value="1965">1965</option>
+					<option value="1966">1966</option>
+					<option value="1967">1967</option>
+					<option value="1968">1968</option>
+					<option value="1969">1969</option>
+					<option value="1970">1970</option>
+					<option value="1971">1971</option>
+					<option value="1972">1972</option>
+					<option value="1973">1973</option>
+					<option value="1974">1974</option>
+					<option value="1975">1975</option>
+					<option value="1976">1976</option>
+					<option value="1977">1977</option>
+					<option value="1978">1978</option>
+					<option value="1979">1979</option>
+					<option value="1980">1980</option>
+					<option value="1981">1981</option>
+					<option value="1982">1982</option>
+					<option value="1983">1983</option>
+					<option value="1984">1984</option>
+					<option value="1985">1985</option>
+					<option value="1986">1986</option>
+					<option value="1987">1987</option>
+					<option value="1988">1988</option>
+					<option value="1989">1989</option>
+					<option value="1990">1990</option>
+					<option value="1991">1991</option>
+					<option value="1992">1992</option>
+					<option value="1993">1993</option>
+					<option value="1994">1994</option>
+					<option value="1995">1995</option>
+					<option value="1996">1996</option>
+					<option value="1997">1997</option>
+					<option value="1998">1998</option>
+					<option value="1999">1999</option>
+					<option value="2000">2000</option>
+					<option value="2001">2001</option>
+					<option value="2002">2002</option>
+					<option value="2003">2003</option>
+					<option value="2004">2004</option>
+					<option value="2005">2005</option>
+					<option value="2006">2006</option>
+					<option value="2007">2007</option>
+					<option value="2008">2008</option>
+					<option value="2009">2009</option>
+					<option value="2010">2010</option>
+					<option value="2011">2011</option>
+				    </select>			    
+
+				</div>
+			    </div>
+			</div>
+			<div class="form-actions">
+			    <a class="btn btn-light-grey go-back">
+				<i class="fa fa-circle-arrow-left"></i> Back
+			    </a>
+			    <button class="btn btn-bricky pull-right" type="submit">
+				Submit <i class="fa fa-arrow-circle-right"></i>
+			    </button>
+			</div>
+		    </fieldset>
+		</form>
+	    </div>	    
+	</div>   
+	<div id="social_popup" class="modal container  fade" tabindex="-1" style="display: none;"></div>
+	<!-- start: MAIN JAVASCRIPTS -->
+
+	<!--[if lt IE 9]>
+	<script src="assets/plugins/respond.min.js"></script>
+	<script src="assets/plugins/excanvas.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<![endif]-->
+
+	<script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+	<script src="assets/plugins/blockUI/jquery.blockUI.js"></script>
+	<script src="assets/plugins/iCheck/jquery.icheck.min.js"></script>
+	<script src="assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+	<script src="assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+	<script src="assets/plugins/less/less-1.5.0.min.js"></script>
+	<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+	<script src="assets/plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+	<script src="assets/js/main.js"></script>
+	<!-- end: MAIN JAVASCRIPTS -->
+	<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+	<script src="assets/plugins/flot/jquery.flot.js"></script>
+	<script src="assets/plugins/flot/jquery.flot.pie.js"></script>
+	<script src="assets/plugins/flot/jquery.flot.resize.min.js"></script>
+	<script src="assets/plugins/jquery.sparkline/jquery.sparkline.js"></script>
+	<script src="assets/plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+	<script src="assets/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+	<script src="assets/plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
+	<script src="assets/js/index.js"></script>
+	<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->	
+	<!-- start: JAVASCRIPTS for social script -->
+	<script src="assets/js/social/core.apps.js"></script>
+	<script src="assets/js/social/core.posts.js"></script>
+	<script src="assets/js/social/core.post.js"></script>
+	<script src="assets/js/social/plugin.timeago.js"></script>
+	<script src="assets/js/social/plugin.textareaExpander.js"></script>
+	<script src="assets/js/social/core.common.js"></script>
+	<script src="assets/js/social/core.common.signedin.js"></script>
+	<script src="assets/bootstrap-modal/js/bootstrap-modal.js"></script>
+	<script src="assets/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
+	<script src="assets/js/login.js"></script>
+	<script src="assets/js/social/core.publisher.js"></script>
+	<script src="assets/js/social/plugin.popups.js"></script>
+	<script src="assets/js/social/page.messages.js"></script>
+	<script src="assets/js/social/page.message.js"></script>
+	<script src="assets/js/social/page.profile.js"></script>
+	<script src="assets/js/social/page.settings.js"></script>
+	<script src="assets/js/social/core.chat.js"></script>
+	<script src="assets/js/social/page.question.js"></script>
+	<script src="assets/js/social/page.register.js"></script>
+	<!-- end: JAVASCRIPTS for social script -->
+
+
+	<script language="JavaScript" type="text/javascript">
 			jQuery(document).ready(function() {
-			//Register to the Push notification server for this platform
-				Main.init();
-				loadPage('tapon_timeline.html');
-				var tapevent_timer = setInterval(CheckForTap, (1 * 1000));
-				
-		/* Wait until device is ready to re-assign Back button */
-        document.addEventListener("deviceready", onDeviceReady, false);
-        function onDeviceReady() {
-            document.addEventListener("backbutton", onBackKeyPress, false);
-        }
-        function onBackKeyPress() {
-   			window.location.href = "index.html";
-			e.preventDefault();
-        }
-	});
-		</script>
-		
-<script language="JavaScript" type="text/javascript">
-			var taponserver = 'http://54.85.29.26';
-			var _phoneNumber = localStorage.getItem("taponDEVICENUMBER");
-			var _tagNumber = localStorage.getItem("taponTAGNUMBER");
-			var url = taponserver + '/tapon/timer_check_for_tap_event.php?phoneNumber=' + _phoneNumber;
-			var urldata = taponserver + '/tapon/gprs_tag_enroll.php?phoneNumber=';
-			
-			
+			    //Register to the Push notification server for this platform
+			    Main.init();
+			    //loadPage('tapon_timeline.html');
+			    showLoginForm();
+			    //var tapevent_timer = setInterval(CheckForTap, (2 * 1000));
 
-				// Load page into url @param url  The url to load
-				function loadPage(url) {
-				//alert(url);
-					$('#main-content').load(url);
-				}
-				
-				// pause the check for tap event timer
-				function pauseTapeventcheck() {
-				//alert("Check for Tap Event Paused");
-					clearInterval(tapevent_timer); //clear interval
-				}
-				
-					/**
-				 * Load Full page into url
-				 * @param url  The url to load
-				 */
-				function loadFullPage(url) {
-					$('#full-content').hide('fast',loadContent);
-					function loadContent() {
-						$('#full-content').load(url,'',showNewContent())
-					}
-					function showNewContent() {
-						$('#full-content').show('fast');
-					}
-					return false;
-				}
-				
-					
-				function PerformLogOut() {
-				//Clear the device phone number to reset the app so it can ask for phone number the next time it is started
-				localStorage.removeItem("taponDEVICENUMBER");
-				localStorage.removeItem("taponDEVICEGUID");
-				window.location.href = "tapon_lock_screen.html";
-				}
-					
-				//Tag enrolment function
-				function tagEnrolment() {
-				//alert(urldata);
-				var $tmodal = $('#tag-enrolment');
-				$tmodal.modal({
-                    backdrop: 'static'
-                });
-				form = $("<form></form>");
-                form.append("<div class='row'></div>");
-                form.find(".row").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Target Device Number:</label><input class='form-control' value='"+localStorage.getItem("taponDEVICENUMBER")+"' type=text name='devicenumber'/></div></div>").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Tag Number To Enroll:</label><input class='form-control' value='' type=text name='tagnumber'/></div></div>");
-                $tmodal.find('.remove-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
-                    form.submit();
-                });
-				$tmodal.find('form').on('submit', function () {
-                    devicenumber = form.find("input[name='devicenumber']").val();
-					tagnumber = form.find("input[name='tagnumber']").val();
-					targeturldata = urldata+devicenumber + "&tagnumber=" + tagnumber + "*" + localStorage.getItem("taponDEVICEGUID");
-            //      alert(targeturldata);  
-				  
-				    $.ajax({
-                url: targeturldata,
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-		//		alert(data);
-		     },
-            error: function (xhr, status, errorThrown) {
-               console.log("responseText: " + xhr.responseText);
-                console.log("status: " + xhr.status);
-                console.log("errorThrown: " + errorThrown);
-				}
-			});	
-				  
-                    $tmodal.modal('hide');
-                    return false;
-                });
-				}
-				
-				
-			//Gets the current messages from the server
-			function CheckForTap() {
-			// when the page first loads, get the routes from the DB and load them into the dropdown box. 
-			//alert("checking foe tap event");
-		   $.ajax({
-                url: url,
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-				if (data['taps'] > 0) {
-			//	alert(data['taps']);
-				window.location.href = "tapon_poptap_screen.html";
-				}
-            //    console.log(data['taps']);
-            },
-            error: function (xhr, status, errorThrown) {
-               console.log("responseText: " + xhr.responseText);
-                console.log("status: " + xhr.status);
-                console.log("errorThrown: " + errorThrown);
-				}
-			});	  	      	
+			});
+	</script>
+
+	<script language="JavaScript" type="text/javascript">
+	    var taponserver = 'http://54.85.29.26';
+	    var _phoneNumber = localStorage.getItem("taponDEVICENUMBER");
+	    var _tagNumber = localStorage.getItem("taponTAGNUMBER");
+	    var url = taponserver + '/tapon/timer_check_for_tap_event.php?phoneNumber=' + _phoneNumber;
+	    var urldata = taponserver + '/tapon/gprs_tag_enroll.php?phoneNumber=';
+
+
+
+	    // Load page into url @param url  The url to load
+	    function loadPage(url) {
+		//alert(url);
+		$('#main-content').load(url);
+	    }
+
+	    // pause the check for tap event timer
+	    function pauseTapeventcheck() {
+		//alert("Check for Tap Event Paused");
+		clearInterval(tapevent_timer); //clear interval
+	    }
+
+	    /**
+	     * Load Full page into url
+	     * @param url  The url to load
+	     */
+	    function loadFullPage(url) {
+		$('#full-content').hide('fast', loadContent);
+		function loadContent() {
+		    $('#full-content').load(url, '', showNewContent())
 		}
+		function showNewContent() {
+		    $('#full-content').show('fast');
+		}
+		return false;
+	    }
 
 
-		
+	    function PerformLogOut() {
+		//Clear the device phone number to reset the app so it can ask for phone number the next time it is started
+		localStorage.removeItem("taponDEVICENUMBER");
+		localStorage.removeItem("taponDEVICEGUID");
+		window.location.href = "tapon_lock_screen.html";
+	    }
 
-		
-</script>
-	</body>
+	    //Tag enrolment function
+	    function tagEnrolment() {
+		//alert(urldata);
+		var $tmodal = $('#tag-enrolment');
+		$tmodal.modal({
+		    backdrop: 'static'
+		});
+		form = $("<form></form>");
+		form.append("<div class='row'></div>");
+		form.find(".row").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Target Device Number:</label><input class='form-control' value='" + localStorage.getItem("taponDEVICENUMBER") + "' type=text name='devicenumber'/></div></div>").append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Tag Number To Enroll:</label><input class='form-control' value='' type=text name='tagnumber'/></div></div>");
+		$tmodal.find('.remove-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function() {
+		    form.submit();
+		});
+		$tmodal.find('form').on('submit', function() {
+		    devicenumber = form.find("input[name='devicenumber']").val();
+		    tagnumber = form.find("input[name='tagnumber']").val();
+		    targeturldata = urldata + devicenumber + "&tagnumber=" + tagnumber + "*" + localStorage.getItem("taponDEVICEGUID");
+		    //      alert(targeturldata);  
+
+		    $.ajax({
+			url: targeturldata,
+			type: 'GET',
+			dataType: 'json',
+			success: function(data) {
+			    //		alert(data);
+			},
+			error: function(xhr, status, errorThrown) {
+			    console.log("responseText: " + xhr.responseText);
+			    console.log("status: " + xhr.status);
+			    console.log("errorThrown: " + errorThrown);
+			}
+		    });
+
+		    $tmodal.modal('hide');
+		    return false;
+		});
+	    }
+
+
+	    //Gets the current messages from the server
+	    function CheckForTap() {
+		// when the page first loads, get the routes from the DB and load them into the dropdown box. 
+		//alert("checking foe tap event");
+		$.ajax({
+		    url: url,
+		    type: 'GET',
+		    dataType: 'json',
+		    success: function(data) {
+			if (data['taps'] > 0) {
+			    //	alert(data['taps']);
+			    window.location.href = "tapon_poptap_screen.html";
+			}
+			//    console.log(data['taps']);
+		    },
+		    error: function(xhr, status, errorThrown) {
+			console.log("responseText: " + xhr.responseText);
+			console.log("status: " + xhr.status);
+			console.log("errorThrown: " + errorThrown);
+		    }
+		});
+	    }
+
+	    // login form
+	    function showLoginForm() {
+		if (isUserLoggedIn() == false) {
+
+		    //alert(urldata);
+		    var $lmodal = $('#login-form-modal');
+		    $lmodal.modal({
+			backdrop: 'static'
+		    });
+		    $('#login-form').on('submit', function(event) {
+			event.preventDefault();
+			form = $(this);
+			var username = form.find("input[name='username']").val();
+			var password = form.find("input[name='password']").val();
+			targeturldata = SITE_URL + 'signin.php';
+
+			$.ajax({
+			    url: targeturldata,
+			    type: 'POST',
+			    data: {username_email: username, password: password, submit: true},
+			    dataType: 'json',
+			    success: function(data) {
+				if (data.result == '1') {
+				    initGetPost();
+
+				    $lmodal.modal('hide');
+				} else {
+				    $lmodal.find('.errorHandler').html(data.error_msg).show();
+				}
+			    },
+			    error: function(xhr, status, errorThrown) {
+				console.log("responseText: " + xhr.responseText);
+				console.log("status: " + xhr.status);
+				console.log("errorThrown: " + errorThrown);
+			    }
+			});
+			return false;
+		    });
+
+		    $('#forgot-password-form').on('submit', function(event) {
+			event.preventDefault();
+			form = $(this);
+			var password = form.find("input[name='password']").val();
+			var confirm = form.find("input[name='confirm']").val();
+			var email = form.find("input[name='email']").val();
+			targeturldata = SITE_URL + 'reset.php';
+
+			$.ajax({
+			    url: targeturldata,
+			    type: 'POST',
+			    data: {password: password, confirm: confirm, email: email, submit: true},
+			    success: function(data) {
+				if (data != '') {
+				    $.popups.alert({message: data, title: 'Error'});
+				} else {
+				    window.location.reload();
+				}
+			    },
+			    error: function(xhr, status, errorThrown) {
+				console.log("responseText: " + xhr.responseText);
+				console.log("status: " + xhr.status);
+				console.log("errorThrown: " + errorThrown);
+			    }
+			});
+			return false;
+		    });
+		} else {
+		    initGetPost();
+		}
+	    }
+
+	    function isUserLoggedIn() {
+
+		targeturldata = SITE_URL + 'is_logged_in.php';
+		var response;
+		$.ajax({
+		    url: targeturldata,
+		    async: false,
+		    success: function(data) {
+			if (data == '1') {
+			    response = true;
+			} else {
+			    response = false;
+			}
+		    },
+		    error: function(xhr, status, errorThrown) {
+			response = false;
+		    }
+		});
+		return response;
+	    }
+
+
+	</script>
+	<div id="fb-root"></div>
+
+    </body>
 </html>
